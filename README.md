@@ -92,8 +92,13 @@ Not all projects need the same rigor. CTRL defines two operational modes:
 
 ### How to Set It Up
 
-You can quickly scaffold the required files into your project using the provided bootstrap script:
+You can instantly install the CTRL framework into any project using `npx`. This will automatically set up `AGENTS.md`, `TESTING.md`, and your GitHub Actions CI pipeline:
 
+```bash
+npx close-the-loop
+```
+
+If you prefer to scaffold it manually:
 ```bash
 # Clone this repo and run the bootstrap script against your project
 ./scripts/ctrl-bootstrap.sh /path/to/your/project --mode mvp
