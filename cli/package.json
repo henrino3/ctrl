@@ -1,0 +1,16 @@
+{
+  "name": "close-the-loop",
+  "version": "1.0.0",
+  "description": "Initialize the CTRL (Close The Running Loop) testing framework for AI agents",
+  "main": "bin/index.js",
+  "bin": {
+    "close-the-loop": "bin/index.js",
+    "ctrl-init": "bin/index.js"
+  },
+  "scripts": {
+    "start": "node bin/index.js"
+  },
+  "author": "Henry Mascot",
+  "license": "MIT",
+  "keywords": []
+}
