@@ -6,6 +6,34 @@ A practical guide to **Peter Steinberger's "Close the Loop"** methodology for au
 
 ![Peter explaining Close the Loop](peter-close-the-loop.gif)
 
+
+## Installation & Setup
+
+We provide a **Universal Installer** that automatically detects your project's language (JS/TS, Python, Go, Rust, PHP, Ruby, Java, C#) and configures the exact testing commands for your AI agent.
+
+### Option 1: Universal curl Installer (Recommended)
+
+Run this in the root of any project:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/henrino3/ctrl/master/scripts/ctrl-bootstrap.sh | bash
+```
+
+### Option 2: NPM / npx (For Node.js users)
+
+If you already have Node.js installed, you can use our `npx` package:
+
+```bash
+npx close-the-loop init
+```
+
+Both methods will:
+1. Detect your project's language and test framework
+2. Create an `AGENTS.md` file with the correct commands (e.g., `npm run test:unit`, `pytest`, `cargo test`, etc.)
+3. Setup a `.github/workflows/ctrl.yml` file for continuous integration
+4. Add the `.cursorrules` / `.clauderc` file so your AI editor knows the rules
+
+
 ## What is "Close the Loop"?
 
 The idea is simple: **give your coding agent the ability to verify its own work.**
