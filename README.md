@@ -68,6 +68,61 @@ Start at the bottom. Each layer adds realism — and cost.
 3. **Full gate before push** — `build + lint + test` must all pass
 4. **Anti-redundancy** — Search for existing helpers before creating new ones
 
+
+### MVP vs Production Mode
+
+Not all projects need the same rigor. CTRL defines two operational modes:
+
+#### 1. MVP Mode (Fast Demo)
+**Use for:** Demos, prototypes, proof of concepts, rapid validation
+- Unit tests recommended but not mandatory
+- E2E tests optional
+- No coverage requirements
+- Build must pass
+- Deploy fast, iterate fast
+
+#### 2. Production Mode (Factory)
+**Use for:** Customer-facing deployments, revenue-generating products, contractual deliverables
+- Unit tests **mandatory** for all new/changed code
+- E2E tests **mandatory** for user flows
+- Coverage target: 60%+ for critical paths
+- All gates must pass before deploy
+
+*Rule of thumb: If failure would damage relationships, revenue, or reputation → use **Production mode**. Otherwise, **MVP mode** is fine.*
+
+### How to Set It Up
+
+You can quickly scaffold the required files into your project using the provided bootstrap script:
+
+```bash
+# Clone this repo and run the bootstrap script against your project
+./scripts/ctrl-bootstrap.sh /path/to/your/project --mode mvp
+```
+
+This will automatically create:
+1. `AGENTS.md` (Build/test/gate commands for the agent)
+2. `TESTING.md` (Testing conventions)
+3. `copilot-instructions.md` (Agent behavioral rules)
+
+Alternatively, you can configure CTRL manually in your project's `package.json`:
+
+```json
+{
+  "scripts": {
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
+    "ctrl:gate": "npm run build && npm run test:unit",
+    "ctrl:full": "npm run ctrl:gate && npm run test:e2e"
+  },
+  "ctrl": {
+    "mode": "production"
+  }
+}
+```
+
+**Integration with AI Agents (e.g., OpenClaw/Geordi):**
+Instruct your agent (via `AGENTS.md` or system prompt) to automatically run `npm run ctrl:gate` after writing code. If the gate fails, the agent must read the error output and fix the code before marking the task complete.
+
 ## Evidence From OpenClaw's Codebase
 
 We analyzed the [OpenClaw GitHub repo](https://github.com/openclaw/openclaw):
