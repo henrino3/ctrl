@@ -92,8 +92,16 @@ Not all projects need the same rigor. CTRL defines two operational modes:
 
 ### How to Set It Up
 
-You can instantly install the CTRL framework into any project using `npx`. This will automatically set up `AGENTS.md`, `TESTING.md`, and your GitHub Actions CI pipeline:
+You can instantly install the CTRL framework into any project. The installer automatically detects your environment (Node.js, Python, Go, or Rust) and sets up `AGENTS.md`, `TESTING.md`, and your GitHub Actions CI pipeline.
 
+#### Option 1: Universal Installer (Mac/Linux)
+Best for Python, Go, Rust, and polyglot codebases.
+```bash
+curl -fsSL https://raw.githubusercontent.com/henrino3/ctrl/master/scripts/ctrl-bootstrap.sh | bash -s -- .
+```
+
+#### Option 2: NPM (JS/TS Projects)
+Best for Node.js, Next.js, and frontend codebases.
 ```bash
 npx close-the-loop
 ```
